@@ -115,6 +115,4 @@ Er zijn twee eenvoudige manieren om de benodigde bestanden voor lokaal gebruik o
 
 ## Hoe zitten de scripts in elkaar?
 
-- In comments in de code zie je op de belamgrijkste punten een uitleg.
-
 - Hierna een korte beschrijving van de JS bestanden.
