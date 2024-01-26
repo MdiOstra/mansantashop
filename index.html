@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Mansanta</title>
+      <link rel="stylesheet" href="styles.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   </head>
+   <body>
+      <div class="achtergrond">
+         <div class="row">
+            <nav class="navbar navbar-expand-sm navbar-dark fixed-top" >
+               <div class="container-fluid">
+                  <div class="col-3">
+                     <a class="navbar-brand p-2" href="index.html"><img src="/images/logo.jpg"
+                        style="border-style:solid; border-color:white;" alt="Mansanta logo" width="110" height="110"></a>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end align-items-center">
+                  </div>
+                  <button class="navbar-toggler me-1" type="button" data-bs-toggle="collapse"
+                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                     aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon "></span>
+                  </button>
+               </div>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto align-items-start">
+                     <li class="nav-item  p-3">
+                        <a class="nav-link active" href="index.html">Home</a>
+                     </li>
+                     <li class="nav-item p-3">
+                        <a class="nav-link" aria-current="page" href="webshop.html">Webshop</a>
+                     </li>
+                  </ul>
+                  <i onclick='window.location.href = "winkelwagen.html"' class="bi bi-cart2 me-4 p-4" style=" cursor:pointer;color: white; font-size: 2em;">
+                  <span onclick='window.location.href = "winkelwagen.html"' id="cartAmount" class="position-absolute top-5
+                     start-69 translate-middle p-1 bg-danger rounded-circle" style="cursor:pointer;width: 25px; height: 25px; font-size: 14px; line-height: 17px;text-align:center">
+                  </span>
+                  </i>
+               </div>
+            </nav>
+         </div>
+         <div class="tekst-container">
+            <div class="fs-1">
+               Benvenuti!
+               <div class="fs-6 lh-base">"Bij ons in het mooie dorpje Ostra vind je een uitgebreid assortiment zelfgemaakte streekproducten. </div>
+               <div class="fs-6 lh-base">
+                  In onze winkel met restaurant kun je tijdens een aperitivo of diner alles proeven en genieten. Beleef de zomerse diners onder onze olijfbomen.  
+               </div>
+               <div class="fs-6 lh-base">Als je binnenkort in Le Marche bent, nodigen we je van harte uit om langs te komen en om kennis te maken met deze smaakvolle wereld!"</div>
+            </div>
+         </div>
+         <div class="cover-container carousel-container">
+            <div id="carouselslide2" class="carousel slide" data-bs-ride="carousel">
+               <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="6000">
+                     <img src="images/crema.jpg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="6000">
+                     <img src="images/meel.jpg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="6000">
+                     <img src="images/olijfolie.jpg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="6000">
+                     <img src="images/passata.jpg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="6000">
+                     <img src="images/peperoncino.jpg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="6000">
+                     <img src="images/peperoni.jpg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="6000">
+                     <img src="images/tagliatelle.jpg" class="d-block w-100" alt="...">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <footer class="footer text-center fixed-bottom">
+         <div class="container">
+            <p>&copy; 2024 Mansanta 
+               <a href="https://www.facebook.com/azienda.mansanta" target="_blank"><i class="bi bi-facebook ms-5"></i>
+               </a>
+               <a href="https://www.instagram.com/mansanta_azienda_agricola/" target="_blank"><i class="bi bi-instagram ms-2"></i>
+               </a>  
+               <a href= "https://www.google.nl/maps/dir//MANSANTA+AZIENDA+AGRICOLA+SHOP,+Via+Riviera+di+Levante,+Ostra,+Ancona,+Itali%C3%AB/@43.6156643,13.1175717,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x132da13579116dbb:0xe8ff61788ca33a3d!2m2!1d13.1587712!2d43.6156096?entry=ttu" target="_blank" ><i class="bi bi-geo-alt-fill ms-2"></i>
+               </a>
+               <a href="mailto:voorbeeld@email.com"><i class="bi bi-envelope ms-2"></i></a>
+            </p>
+         </div>
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+   </body>
+</html>

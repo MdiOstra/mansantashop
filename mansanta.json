@@ -1,0 +1,56 @@
+[
+    {
+        "id": "p1",
+        "name": "Olijfolie",
+        "info":"mignola extra vergine 0,1l",
+        "price": 12,
+        "stock": 10,
+        "amount": 0,
+        "img": "../images/olijfolie.jpg"
+    },
+    {
+        "id": "p2",
+        "name": "Meel",
+        "info":"type 00 1kg ",
+        "price": 2.50,
+        "stock": 10,
+        "amount": 0,
+        "img": "../images/meel.jpg"
+    },
+    {
+        "id": "p3",
+        "name": "Passata",
+        "info":"tomatensaus ",
+        "price": 4.50,
+        "stock": 10,
+        "amount": 0,
+        "img": "../images/passata.jpg"
+    },
+    {
+        "id": "p4",
+        "name": "Peperoncino",
+        "info":"in poedervorm 15g",
+        "price": 5.95,
+        "stock": 10,
+        "amount": 0,
+        "img": "../images/peperoncino.jpg"
+    },
+    {
+        "id": "p5",
+        "name": "Peperoni",
+        "info":"paprika op olie",
+        "stock": 10,
+        "price": 7,
+        "amount": 0,
+        "img": "../images/peperoni.jpg"
+    },
+    {
+        "id": "p6",
+        "name": "Tagliatelle",
+        "info":"handgemaakte nestjes",
+        "price": 3.75,
+        "stock": 10,
+        "amount": 0,
+        "img": "../images/tagliatelle.jpg"
+    }
+]
