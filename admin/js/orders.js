@@ -1,4 +1,3 @@
-// Voeg deze functie toe aan je orders.js-bestand
 function showOrderOverview() {
     // Haal de ordergegevens op uit de lokale opslag
     const storedOrders = JSON.parse(localStorage.getItem('orders')) || [];

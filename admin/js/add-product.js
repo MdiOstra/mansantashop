@@ -18,9 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const info = document.getElementById('info').value;
         const price = parseFloat(document.getElementById('price').value);
         const stock = parseInt(document.getElementById('stock').value, 10);
-        const amount = 0; // Amount is standaard 0
+        const amount = 0; // amount is standaard 0
         const img = document.getElementById('img').value;
-        // resetForm();
+
         // Controleer of alle vereiste velden zijn ingevuld
         if (!name || Number.isNaN(Number(price)) || Number.isNaN(Number(stock)) || !img) {
             alert('Vul alle vereiste velden in.');
@@ -64,17 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         resetForm();
-        // Optioneel: vernieuw de tabel met de nieuwe gegevens
-        // updateTableFromLocalStorage();
-
-        // Optioneel: reset het formulier
     }
 
     // Voeg een event listener toe aan de knop voor het toevoegen van producten
     const addButton = document.querySelector('#productForm button');
     addButton.addEventListener('click', addProduct);
-
-    // Optionele functie om het formulier te resetten na het toevoegen van een product
 });
 
 document.addEventListener('DOMContentLoaded', () => {

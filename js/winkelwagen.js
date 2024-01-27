@@ -5,10 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const cartAmountElement = document.getElementById('cartAmount');
 
         if (newAmount !== undefined) {
-            // If newAmount is provided, set the cart amount to it
             cartAmountElement.textContent = newAmount.toString();
         } else {
-            // If newAmount is not provided, compute cart amount from stored products
             const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
             const cartAmount = storedProducts.reduce((total, product) => total + product.amount, 0);
             cartAmountElement.textContent = cartAmount.toString();
@@ -29,16 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const pricePerUnit = document.createElement('p');
         pricePerUnit.className = 'card-text';
 
-        // Formateer het getal als een kommagetal met twee decimalen
         const formattedPrice = parseFloat(product.price).toLocaleString('nl-NL', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
         });
 
         pricePerUnit.textContent = `Prijs per stuk: €${formattedPrice}`;
-
-        // Voeg de prijs per stuk toe aan de card
-        // (Voeg hier de logica toe om "pricePerUnit" aan de card toe te voegen)
 
         const totalCost = document.createElement('p');
         totalCost.className = 'card-text';
@@ -89,11 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
         const selectedProducts = storedProducts.filter((product) => product.amount > 0);
 
-        // Check if there are selected products
         if (selectedProducts.length === 0) {
             const messageContainer = document.getElementById('messageContainer');
             messageContainer.textContent = 'Voeg eerst producten toe aan de winkelwagen voordat je kunt afronden.';
-            return; // Do not proceed with the order creation
+            return;
         }
 
         const now = new Date();
@@ -106,17 +99,14 @@ document.addEventListener('DOMContentLoaded', () => {
             date: new Date().toLocaleString(),
         };
 
-        // Store the order in localStorage
         const orders = JSON.parse(localStorage.getItem('orders')) || [];
         orders.push(order);
         localStorage.setItem('orders', JSON.stringify(orders));
 
-        // Clear the selected products after creating the order
         selectedProducts.forEach((product) => {
-            // Create a new object based on the existing one
             const updatedProduct = { ...product };
             updatedProduct.amount = 0;
-            // Replace the existing product in storedProducts with the updated one
+
             const index = storedProducts.findIndex((p) => p.id === updatedProduct.id);
             if (index !== -1) {
                 storedProducts[index] = updatedProduct;
@@ -135,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const totalPriceElement = document.getElementById('totalPrice');
         const checkoutButton = document.getElementById('checkoutButton');
-        // const confirmationMessage = document.getElementById('confirmationMessage');
 
         if (totalPriceElement && checkoutButton) {
             totalPriceElement.style.display = 'none';
@@ -152,14 +141,10 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         }
 
-        // Reset the cart amount to 0
         updateCartAmount(0);
 
-        // Display the updated selected products and total price
         displaySelectedProducts();
     }
-
-    // Modify the updateCartAmount function to accept a parameter for the new cart amount
 
     function fetchAndSaveProducts(updateAmount = true) {
         const storedProducts = JSON.parse(localStorage.getItem('products'));
@@ -184,18 +169,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetchAndSaveProducts();
 
-    // Add event listener for the 'Afrekenen' button
-    const checkoutButton = document.getElementById('checkoutButton'); // Declare checkoutButton
+    const checkoutButton = document.getElementById('checkoutButton');
 
-    // Add event listener for the 'Afrekenen' button
     if (checkoutButton) {
         checkoutButton.addEventListener('click', createOrder);
     }
 
-    // Adjust button event listener
     if (adjustButton) {
         adjustButton.addEventListener('click', () => {
-        // Redirect to webshop.html
             window.location.href = 'webshop.html';
         });
     }

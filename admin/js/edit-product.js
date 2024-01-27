@@ -1,4 +1,3 @@
-// Voeg deze functie toe aan je edit-product.js-bestand
 function getProductById(productId) {
     // Haal de gegevens uit de lokale opslag
     const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Controleer of het element is gevonden voordat je de tekst instelt
     if (editMessageElement) {
         // Stel de tekst in op basis van het product-ID
-
         fillFormWithProductData(productIdFromUrl);
     } else {
         console.error('Het element met ID "editMessage" is niet gevonden in de DOM.');

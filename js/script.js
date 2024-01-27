@@ -1,5 +1,4 @@
 /* eslint-disable no-use-before-define */
-
 document.addEventListener('DOMContentLoaded', () => {
     function saveProductsToLocalStorage(products) {
         if (typeof Storage !== 'undefined') {
@@ -43,15 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const index = storedProducts.findIndex((p) => p.id === product.id);
 
         if (index !== -1) {
-            // Check if there is enough stock before increasing the amount
             if (change === 1 && storedProducts[index].stock > 0) {
                 storedProducts[index].amount += change;
-                storedProducts[index].stock -= 1; // Decrease stock by 1
+                storedProducts[index].stock -= 1;
                 saveProductsToLocalStorage(storedProducts);
                 displayProducts(products);
             } else if (change === -1 && storedProducts[index].amount > 0) {
                 storedProducts[index].amount += change;
-                storedProducts[index].stock += 1; // Increase stock by 1
+                storedProducts[index].stock += 1;
                 saveProductsToLocalStorage(storedProducts);
                 displayProducts(products);
             }
@@ -84,9 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         price.textContent = `prijs: €${formattedPrice}`;
 
-        // Voeg de prijs toe aan de card
-        // (Voeg hier de logica toe om de "price" aan de card toe te voegen)
-
         const stock = document.createElement('h5');
         stock.className = 'product-stock ms-2 mt-2 mb-2';
         stock.textContent = `op voorraad: ${product.stock}`;
@@ -107,12 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const addButton = document.createElement('button');
         addButton.className = 'button add btn btn-secondary mb-2 ms-2 bi bi-plus-lg';
-        // addButton.textContent = '+';
         addButton.addEventListener('click', () => updateAmount(product, 1, products));
 
         const removeButton = document.createElement('button');
         removeButton.className = 'button remove btn btn-secondary mb-2 ms-2 bi bi-dash-lg';
-        // removeButton.textContent = '';
         removeButton.addEventListener('click', () => updateAmount(product, -1, products));
 
         buttonContainer.appendChild(addButton);

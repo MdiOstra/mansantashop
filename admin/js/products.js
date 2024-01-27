@@ -31,7 +31,7 @@ function updateTableFromLocalStorage() {
 }
 // Functie om de lokale opslag opnieuw in te stellen uit mansanta.json
 function resetLocalStorageFromJSON() {
-    // Voer een AJAX-verzoek uit om mansanta.json op te halen
+    // Voer een verzoek uit om mansanta.json op te halen
     fetch('../mansanta.json')
         .then((response) => response.json())
         .then((data) => {
@@ -77,13 +77,7 @@ function editProduct(productId) {
     console.log(`BewerkProduct-functie aangeroepen voor product met ID: 
     ${productId}`);
 }
-/* eslint-enable no-unused-vars */
-// Functie om de tabel bij te werken met de nieuwe gegevens
 
-// Functie om een product toe te voegen via knop geregeld
-
-// Functie om een product te verwijderen
-/* eslint-disable no-unused-vars */
 function removeProduct(productId) {
     // Haal de gegevens uit de lokale opslag
     const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
@@ -107,4 +101,3 @@ function removeProduct(productId) {
         console.error(`Product met ID ${productId} kon niet worden gevonden.`);
     }
 }
-/* eslint-enable no-unused-vars */
