@@ -29,28 +29,31 @@
    </head>
    <body>
       <div class="row">
-         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid text-nowrap">
+         <nav class="navbar navbar-expand-sm navbar-dark" >
+            <div class="container-fluid">
                <div class="col-3">
                   <a class="navbar-brand p-2" href="../index.html"><img src="/images/logo.jpg"
-                     style="border-style:solid; border-color:white;" alt="Mansanta logo" width="75" height="75"></a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon "></span>
-                  </button>
+                     style="border-style:solid; border-color:white;" alt="Mansanta logo" width="110" height="110"></a>
                </div>
-               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav me-auto align-items-start">
-                     <li class="nav-item  p-2">
-                        <a class="nav-link " aria-current="page" href="productoverzicht.html">productoverzicht</a>
-                     </li>
-                     <li class="nav-item p-2">
-                        <a class="nav-link active" href="besteloverzicht.html">besteloverzicht</a>
-                     </li>
-                     <li class="nav-item p-2">
-                        <a id="logoutLink" class="nav-link" href="login.html">uitloggen</a>
-                     </li>
-                  </ul>
+               <div class="col-6 d-flex justify-content-end align-items-center">
                </div>
+               <button class="navbar-toggler me-1" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                  aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon "></span>
+               </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav me-auto align-items-start">
+                  <li class="nav-item  p-3">
+                     <a class="nav-link" href="productoverzicht.html">productoverzicht</a>
+                  </li>
+                  <li class="nav-item p-3">
+                     <a class="nav-link active" aria-current="page" href="besteloverzicht.html">besteloverzicht</a>
+                  </li>
+               </ul>
+               <i onclick='window.location.href = "login.html"' class="bi bi bi-box-arrow-right me-4 p-4" >
+               </i>
             </div>
          </nav>
       </div>

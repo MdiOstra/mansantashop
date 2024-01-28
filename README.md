@@ -50,7 +50,7 @@ Voor de BIT-beoordelaar: Deze opdracht "Build your own webshop!" is uitgewerkt v
 - Als je op het winkelwagen icoontje drukt, kom je op het winkelwagenscherm om je bestelling te bevestigen.
 - Met de knop afrekenen wordt het bestelproces afgerond met een bevestiging waarin je unieke bestelnummer wordt getoond.
 - Met de knop toevoegen kom je in de webshop om je bestelling te wijzigen.
-- Je kunt in admin/productoverzicht.html komen via een login met gebruikersnaam en wachtwoord.
+- Je kunt in admin/productoverzicht.html komen via een login met gebruikersnaam en wachtwoord.(voor de demo username:1 en pw:1)
 
 ### Admin
 
@@ -60,7 +60,7 @@ Voor de BIT-beoordelaar: Deze opdracht "Build your own webshop!" is uitgewerkt v
 
 - via de link besteloverzicht in de navigatiebalk krijg je een overzicht van de orders. Tussen iedere order een lege regel.
 
-- In de navigatiebalk heb je de optie om uit te loggen.
+- In de navigatiebalk heb je de optie om uit te loggen via exit-icoon.
 
 - In de schermen 'toevoegen' en 'aanpassen' verschijnt afbeelding als je een geldige link invult zoals aangegeven in de placeholder.
 
@@ -133,21 +133,21 @@ Er zijn twee manieren om de benodigde bestanden voor lokaal gebruik op te halen:
      het weergeven van producten, het bijwerken van de hoeveelheid van een product,
      het creëren van een productkaart, het ophalen en opslaan van producten.
 
-## Functie: `saveProductsToLocalStorage(products)`
+### Functie: `saveProductsToLocalStorage(products)`
 
 - **Opbouw:**
 - Controleert of de localStorage wordt ondersteund.
 - Slaat producten op in de localStorage als JSON-gegevens.
 - Toont een consolebericht met betrekking tot de status van het opslaan.
 
-## Functie: `updateCartAmount()`
+### Functie: `updateCartAmount()`
 
 - **Opbouw:**
 - Haalt opgeslagen producten op uit localStorage.
 - Berekent de totale hoeveelheid producten in de winkelwagen.
 - Werkt de weergave van het winkelwagenbedrag bij.
 
-## Functie: `displayProducts()`
+### Functie: `displayProducts()`
 
 - **Opbouw:**
 - Haalt opgeslagen producten op uit localStorage.
@@ -155,7 +155,7 @@ Er zijn twee manieren om de benodigde bestanden voor lokaal gebruik op te halen:
 - Maakt productkaarten en voegt deze toe aan de productcontainer.
 - Werkt het winkelwagenbedrag bij.
 
-## Functie: `updateAmount(product, change)`
+### Functie: `updateAmount(product, change)`
 
 - **Opbouw:**
 - Haalt opgeslagen producten op uit localStorage.
@@ -164,13 +164,13 @@ Er zijn twee manieren om de benodigde bestanden voor lokaal gebruik op te halen:
 - Slaat bijgewerkte producten op in localStorage.
 - Vernieuwt van de productweergave.
 
-## Functie: `createProductCard(product)`
+### Functie: `createProductCard(product)`
 
 - **Opbouw:**
 - Creëert een productkaart met informatie zoals naam, prijs, voorraad, afbeelding, en knoppen voor toevoegen/verwijderen.
 - Gebruikt event listeners voor de knoppen om de hoeveelheid bij te werken.
 
-## Functie: `fetchAndSaveProducts(initialDisplayType)`
+### Functie: `fetchAndSaveProducts(initialDisplayType)`
 
 - **Opbouw:**
 - Haalt opgeslagen producten op uit localStorage.
@@ -179,7 +179,7 @@ Er zijn twee manieren om de benodigde bestanden voor lokaal gebruik op te halen:
 - Weergave van producten en bijwerken van het winkelwagenbedrag.
 De fetchAndSaveProducts-functie is asynchroon omdat deze afhankelijk is van het ophalen van gegevens via een HTTP-verzoek (fetch). Om met asynchrone code om te gaan, worden promises gebruikt. .then() gebruik ik hier om op de voltooiing van die promise te wachten voordat de volgende actie wordt ondernomen.
 
-## Event Listener: `window.addEventListener('storage', (event) => {})`
+### Event Listener: `window.addEventListener('storage', (event) => {})`
 
 - **Logica:**
 - Luistert of er iets wordt opgeslagen en werkt het winkelwagenbedrag als er een verandering is.
@@ -193,7 +193,7 @@ De fetchAndSaveProducts-functie is asynchroon omdat deze afhankelijk is van het 
 
 Korte analyse van het script
 
-Dit script lijkt te zijn ontworpen voor een eenvoudige webwinkelapplicatie. Het maakt gebruik van de `localStorage` om productinformatie en bestellingen op te slaan. Het script reageert op het 'DOMContentLoaded'-evenement, wat betekent dat het pas wordt uitgevoerd nadat de DOM volledig is geladen. Het script manipuleert de DOM om geselecteerde producten weer te geven, de winkelwagen bij te werken en bestellingen te verwerken.
+Dit script is gemaakt voor een eenvoudige demo-webshop. Het maakt gebruik van de `localStorage` om productinformatie en bestellingen op te slaan. Het script reageert op het 'DOMContentLoaded'-evenement, wat betekent dat het pas wordt uitgevoerd nadat de DOM volledig is geladen. Het script manipuleert de DOM om geselecteerde producten weer te geven, de winkelwagen bij te werken en bestellingen te verwerken.
 
 - **Variabelen:**
   - `adjustButton`: Het element met id 'adjustButton' wordt opgeslagen in deze constante.
@@ -272,7 +272,7 @@ Dit script lijkt te zijn ontworpen voor een eenvoudige webwinkelapplicatie. Het 
 
 ## Naam script: `add-product.js`
 
-In dit script vind je de werking ook in de comment regels
+In dit script vind je de werking ook in de comment regels.
 
 ## Korte analyse van het script
 
@@ -352,8 +352,7 @@ Er is één stuk code en geen expliciete functies in dit script. Het script cont
 
 - Bij het laden van de pagina wordt gecontroleerd of er een sessie-token aanwezig is.
 - Als er geen sessie-token is, wordt de gebruiker doorverwezen naar de inlogpagina.
-- Dit kan worden gezien als een eenvoudige beveiligingscontrole om ervoor te zorgen dat alleen ingelogde gebruikers met een geldig sessie-token toegang hebben tot de pagina. In dit specifieke geval lijkt het erop dat de pagina is bedoeld voor administrators, aangezien het script niet doorgaat als er geen sessie-token is.
-Dit script zorgt ervoor dat alleen geauthenticeerde gebruikers met de juiste rechten toegang hebben tot de inhoud.
+- Dit is een eenvoudige beveiligingscontrole om ervoor te zorgen dat alleen ingelogde gebruikers met een geldig sessie-token toegang hebben tot de pagina.
 
 **Naam script:** `edit-product.js`
 
@@ -362,7 +361,7 @@ In dit script vind je de werking ook in de comment regels. Het werkt vergelijkba
 Korte analyse van het script
 
 Algemeen
-Dit script lijkt te zijn ontworpen voor het bewerken van productinformatie op een webpagina. Het maakt gebruik van lokale opslag om productgegevens te beheren en stelt gebruikers in staat om productinformatie te bewerken en op te slaan.
+Dit script bewerkt de productinformatie op een webpagina. Het maakt gebruik van lokale opslag om productgegevens te beheren en stelt gebruikers in staat om productinformatie te bewerken en op te slaan.
 
 #### Variabelen
 
@@ -534,7 +533,7 @@ Dit script zorgt voor een overzicht van bestellingen weer te geven op bestelover
 - **Opbouw:** Roept de `showOrderOverview` functie aan om de ordergegevens weer te geven.
 - **Logica:** Direct nadat de DOM is geladen, worden de ordergegevens weergegeven door de functie `showOrderOverview` aan te roepen.
 
-## Naam script: `productTable.js`
+## Naam script: `products.js`
 
 ## De analyse van het script
 
@@ -634,7 +633,6 @@ Dit HTML-script is de webshoppagina van Mansanta. Hier is een korte analyse, waa
 - Net als in `index.html` begint het script met de doctype-definitie, metagegevens, en verwijzingen naar stijlbladen en externe bibliotheken (Bootstrap CSS en Bootstrap Icons).
 - De body van de pagina heeft een donkere achtergrondkleur (`bg-dark`).
 - De navigatiebalk bevat een logo, links naar de startpagina ('Home') en de webshop ('Webshop'), evenals een winkelwagenpictogram.
-- Er is een donkergekleurde strook onder de navigatiebalk.
 - Het product-container (`<div id="product-container" class="container mb-4 mt-4">`) geeft producten weer en is leeg omdat de inhoud wordt ingevuld door JavaScript, zoals aangegeven door de scripttags op het einde van de body.
 - De footer bevat informatie over Mansanta, inclusief sociale media-links en contactgegevens.
 - De scripttags aan het einde van het body-element die verwijzen naar `script.js` en Bootstrap JavaScript-bibliotheek.
@@ -676,7 +674,7 @@ Dit HTML-script vertegenwoordigt de beheerpagina voor producten op de Mansanta-w
 
 - **Inline CSS**: Ik heb eeen inline CSS-stijl toegepast op het `th` (table header) en `td` (table data) element binnen een media query, waardoor de tabel responsief wordt bij een maximale breedte van 818 pixels. Dit heb ik inline gedaan, omdat dit alleen op deze pagina nodig is om de tabel leesbaar en netjes onder de navigatiebalk te houden bij kleinere schermen.
 
-- **Navigatiebalk**: Een navigatiebalk bevat het logo, menu-items voor productoverzicht, besteloverzicht en uitloggen. De uitloglink heeft de id "logoutLink," die wordt gebruikt door het `logout.js`-bestand. Ik heb een ander formaat en een andere kleur gekozen om duidelijk te maken dat je als admin in een andere omgeving werkt.
+- **Navigatiebalk**: Een navigatiebalk bevat het logo, menu-items voor productoverzicht, besteloverzicht en uitloggen. De uitloglink heeft de id "logoutLink," die wordt gebruikt door het `logout.js`-bestand. De stijl van de balk is afgestemd op de stijl van de webshop.
 
 - **Tabel**: Een tabel met koptekst (`thead`) en lichaam (`tbody`). De kolommen zijn ID, Product, Prijs, URL, Voorraad, en twee kolommen met de label "Acties." De tabel wordt dynamisch ingevuld door JavaScript met behulp van de id "productTableBody."
 
@@ -752,9 +750,9 @@ Dit HTML-script vertegenwoordigt de pagina voor het bewerken van producten op de
 
 - **JavaScript-bestanden**: Er is een scripttag aan het einde van de body die verwijst naar het JavaScript-bestand `edit-product.js` en de Bootstrap JavaScript-bibliotheek.
 
-Het script lijkt te wordt gebruikt voor het bewerken van bestaande producten op de website met functionaliteiten zoals het invullen van bewerkbare productinformatie in een formulier, het bekijken van een voorbeeld van de afbeelding en het uitvoeren van de wijzigingsactie. Het script maakt gebruik van een apart JavaScript-bestand (`edit-product.js`) om de logica voor het bewerken van producten te bevatten.
+Het script wordt gebruikt voor het bewerken van bestaande producten op de website met functionaliteiten zoals het invullen van bewerkbare productinformatie in een formulier, het bekijken van een voorbeeld van de afbeelding en het uitvoeren van de wijzigingsactie. Het script maakt gebruik van een apart JavaScript-bestand (`edit-product.js`) om de logica voor het bewerken van producten te bevatten.
 
-## Naam script
+## Naam script `login.html`
 
 HTML-pagina voor het beheerdersloginportaal van Mansanta.
 

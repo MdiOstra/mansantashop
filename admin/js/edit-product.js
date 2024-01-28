@@ -30,12 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Controleer of het element is gevonden voordat je de tekst instelt
     if (editMessageElement) {
-        // Stel de tekst in op basis van het product-ID
+    // Stel de tekst in op basis van het product-ID
         fillFormWithProductData(productIdFromUrl);
     } else {
-        console.error('Het element met ID "editMessage" is niet gevonden in de DOM.');
+    // Volgende regel aanzetten om te testen
+    // console.error('Het element met ID "editMessage" is niet gevonden in de DOM.');
     }
-
     // Voeg een event listener toe aan het img-veld om de preview bij te werken
     document.getElementById('img').addEventListener('input', function () {
         // Haal de waarde op van het img-veld

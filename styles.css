@@ -2,8 +2,14 @@ body {
 	margin: 0;
 	padding: 0;
 	height: 100vh;
-}
-
+	overflow-x: hidden;/*aanpassing*/
+ }
+ 
+ .row {
+	margin-left: 0;/*aanpassing*/
+	margin-right: 0;/*aanpassing*/
+	}
+ 
 .navbar {
 	background-color: black;
 }
@@ -64,7 +70,6 @@ body {
 .carousel-item img {
 	max-width: 100%;
 	height: auto;
-	/* Behoud de beeldverhouding */
 }
 
 .tekst-container {
@@ -78,6 +83,19 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.bi-box-arrow-right {
+    color: grey; 
+	font-size: 2em;
+}
+
+.bi-box-arrow-right:hover { /*aanpassing*/
+    color: white; 	
+}
+
+#imgPreview{
+	display: none; /*aanpassing*/
 }
 
 @media (max-width: 1200px) {
@@ -132,7 +150,7 @@ body {
 
 	.achtergrond {
 
-		min-height: 91%;
+		min-height: 100%;
 	}
 }
 

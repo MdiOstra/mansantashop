@@ -3,9 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function saveProductsToLocalStorage(products) {
         if (typeof Storage !== 'undefined') {
             localStorage.setItem('products', JSON.stringify(products));
-            console.log('Producten zijn succesvol opgeslagen in localStorage.');
+            // Aanzetten voor testen
+            // console.log('Producten zijn succesvol opgeslagen in localStorage.');
         } else {
-            console.error('LocalStorage wordt niet ondersteund in deze browser.');
+            // Aanzetten voor testen
+            // console.error('LocalStorage wordt niet ondersteund in deze browser.');
         }
     }
 
@@ -15,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const cartAmountElement = document.getElementById('cartAmount');
 
         const cartAmount = storedProducts.reduce((total, product) => total + product.amount, 0);
-        console.log('cartAmount:', cartAmount);
         cartAmountElement.textContent = cartAmount.toString();
     }
 
@@ -145,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('storage', (event) => {
         if (event.key === 'products') {
-            console.log('Storage event detected. Updating cartAmount.'); updateCartAmount();
+            updateCartAmount();
         }
     });
 

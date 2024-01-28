@@ -40,11 +40,10 @@ function resetLocalStorageFromJSON() {
 
             // Vernieuw de tabel met de nieuwe gegevens
             updateTableFromLocalStorage();
-
-            console.log('Local Storage is opnieuw ingesteld met gegevens uit mansanta.json:', data);
         })
-        .catch((error) => {
-            console.error('Fout bij het ophalen van mansanta.json:', error);
+        .catch(() => {
+            // Lege catch-clausule. Voor testfase console.error aanzetten.
+            // Geen console.error('Fout bij het ophalen van mansanta.json:', error);
         });
 }
 // Functie om de knoppen voor acties te genereren
@@ -74,8 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
 /* eslint-disable no-unused-vars */
 function editProduct(productId) {
     window.location.href = `edit-product.html?productId=${productId}`;
-    console.log(`BewerkProduct-functie aangeroepen voor product met ID: 
-    ${productId}`);
 }
 
 function removeProduct(productId) {
@@ -95,9 +92,8 @@ function removeProduct(productId) {
 
         // Vernieuw de tabel met de nieuwe gegevens
         updateTableFromLocalStorage();
-
-        console.log(`Product met ID ${productId} is succesvol verwijderd.`);
     } else {
-        console.error(`Product met ID ${productId} kon niet worden gevonden.`);
+        // Volgende regel aanzetten om te testen
+        //  console.error(`Product met ID ${productId} kon niet worden gevonden.`);
     }
 }
