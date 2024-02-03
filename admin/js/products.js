@@ -12,11 +12,18 @@ function updateTable(products) {
                          <td>${product.price}</td>
                          <td>${product.img}</td>
                          <td>${product.stock}</td>
-                         <td>
-                            
-                             <button type="button" class="btn btn-primary btn-sm" onclick="editProduct('${product.id}')">Bewerken</button></td>
-
-                        <td><button type="button" class="btn btn-danger btn-sm" onclick="removeProduct('${product.id}')">Verwijderen</button></td>`;
+                         <td>                   
+                             <button type="button"
+                             class="btn btn-primary btn-sm"
+                              onclick="editProduct('${product.id}')">
+                              Bewerken</button>
+                              </td>
+                        <td>
+                        <button type="button"
+                         class="btn btn-danger btn-sm"
+                          onclick="removeProduct('${product.id}')">
+                          Verwijderen</button>
+                          </td>`;
 
         tableBody.appendChild(row);
     });
