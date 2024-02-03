@@ -47,9 +47,13 @@ Voor de BIT-beoordelaar: Deze opdracht "Build your own webshop!" is uitgewerkt v
 - In de webshop.html worden in de demo-versie zes producten getoond.
 - Je kunt een aantal kiezen en de producten via de knop bestellen in je winkelwagen plaatsen.
 - De winkelwagen.html toont het aantal gekozen producten en laat zien hoeveel voorraad er is.
-- Als je op het winkelwagen icoontje drukt, kom je op het winkelwagenscherm om je bestelling te bevestigen.
+- Als je op het winkelwagen icoontje drukt, kom je op het winkelwagenscherm om je bestelling te bevestigen of aan te passen. Je kunt:
+- aantallen per product aanpassen, waarbij je de voorraad ziet,
+- losse producten uit de winkelwagen verwijderen,
+- alle producten in één keer verwijderen,
+- afrekenen
+- terug naar de shop om andere producten toe te voegen.
 - Met de knop afrekenen wordt het bestelproces afgerond met een bevestiging waarin je unieke bestelnummer wordt getoond.
-- Met de knop toevoegen kom je in de webshop om je bestelling te wijzigen.
 - Je kunt in admin/productoverzicht.html komen via een login met gebruikersnaam en wachtwoord.(voor de demo username:1 en pw:1)
 
 ### Admin
@@ -58,7 +62,7 @@ Voor de BIT-beoordelaar: Deze opdracht "Build your own webshop!" is uitgewerkt v
 
 - Bij acties kun je producten aanpassen toevoegen of verwijderen. Je kunt ook de beginsituatie herstellen met reset JSON.
 
-- via de link besteloverzicht in de navigatiebalk krijg je een overzicht van de orders. Tussen iedere order een lege regel.
+- via de link besteloverzicht in de navigatiebalk krijg je een overzicht van de orders. Op de eerste regel van de bestelling zie je in blauw het ordernummer, datum en tijd en de totaalprijs. Daarnaast zie je in zwart de bestelde producten met hun productnaam en het aantal. Tussen iedere order een lege regel.
 
 - In de navigatiebalk heb je de optie om uit te loggen via exit-icoon.
 
@@ -189,58 +193,41 @@ De fetchAndSaveProducts-functie is asynchroon omdat deze afhankelijk is van het 
 - **Logica:**
 - haalt de eerste keer de producten op en slaat ze op.
 
-## Naam: `winkelwagen.js`
+## Naam: `winkelwagen.js` (aangepaste versie met uitleg van functies)
 
-Korte analyse van het script
+### Korte analyse van het script
 
-Dit script is gemaakt voor een eenvoudige demo-webshop. Het maakt gebruik van de `localStorage` om productinformatie en bestellingen op te slaan. Het script reageert op het 'DOMContentLoaded'-evenement, wat betekent dat het pas wordt uitgevoerd nadat de DOM volledig is geladen. Het script manipuleert de DOM om geselecteerde producten weer te geven, de winkelwagen bij te werken en bestellingen te verwerken.
+Dit script is een uitbreiding van het oorspronkelijke script voor een eenvoudige demo-webshop. Het maakt gebruik van `localStorage` om productinformatie en bestellingen op te slaan. Het script reageert op het 'DOMContentLoaded'-evenement, manipuleert de DOM om geselecteerde producten weer te geven, de winkelwagen bij te werken en bestellingen te verwerken.
 
-- **Variabelen:**
-  - `adjustButton`: Het element met id 'adjustButton' wordt opgeslagen in deze constante.
-  
-- **Logica volgorde:**
-  - Luistert naar het 'DOMContentLoaded'-evenement.
-  - Initialiseert variabelen en functies.
-  - Voert de functie `fetchAndSaveProducts` uit om opgeslagen producten op te halen.
-  - Voegt event listeners toe aan knoppen.
-  - Reageert op het 'storage'-evenement om de winkelwagen bij te werken bij veranderingen in opgeslagen producten.
-  - Voert de initiële weergave van geselecteerde producten uit.
+### Functies en uitleg
 
-## Per functie
+#### `removeAllProducts()`
 
-### updateCartAmount(newAmount)
+- **Opbouw:**
+  - Haalt alle opgeslagen producten op uit `localStorage`.
+  - Voor elk product herstelt het de voorraad en zet de hoeveelheid in de winkelwagen op 0.
+  - Slaat de bijgewerkte producten op in `localStorage`.
+  - Vernieuwt de weergave van geselecteerde producten en het winkelwagenbedrag.
+
+#### `updateAmountInCart(product, change)`
+
+- **Opbouw:**
+  - Accepteert een product en een waarde `change`.
+  - Haalt opgeslagen producten op uit `localStorage`.
+  - Vindt het product in de lijst van opgeslagen producten.
+  - Als `change` gelijk is aan -1, wordt de voorraad van het product met de absolute waarde van `change` verhoogd.
+  - Update de hoeveelheid in de winkelwagen en de voorraad van het product.
+  - Slaat de bijgewerkte producten op in `localStorage`.
+  - Vernieuwt de weergave van geselecteerde producten en het winkelwagenbedrag.
+
+#### `updateCartAmount(newAmount)`
 
 - **Opbouw:**
   - Accepteert een optioneel argument `newAmount`.
-  - Controleert of `newAmount` is opgegeven en werkt de weergave van het winkelwagenbedrag dienovereenkomstig bij.
+  - Bij aanwezigheid van `newAmount` wordt het winkelwagenbedrag dienovereenkomstig bijgewerkt.
   - Als `newAmount` niet is opgegeven, haalt het de opgeslagen producten op en berekent het de totale hoeveelheid producten in de winkelwagen.
 
-### createSelectedProductCard(product)
-
-- **Opbouw:**
-  - Accepteert een productobject.
-  - Maakt een HTML-element aan voor de weergave van een geselecteerd product met naam, prijs per stuk, totaalprijs en hoeveelheid.
-  - Geeft het gemaakte HTML-element terug.
-  - Hiermee zorg ik dat Numbers zoals bijvoorbeeld 2.5 worden omgezet naar 2,50: const formattedPrice = parseFloat(product.price).toLocaleString('nl-NL', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-        });
-
-### displayTotalPrice(products)
-
-- **Opbouw:**
-  - Accepteert een array van producten.
-  - Berekent en toont de totaalprijs van de geselecteerde producten.
-
-### displaySelectedProducts()
-
-- **Opbouw:**
-  - Haalt opgeslagen producten op uit `localStorage`.
-  - Filtert producten met een hoeveelheid groter dan 0.
-  - Maakt productkaarten en voegt deze toe aan de productcontainer.
-  - Toont de totaalprijs van geselecteerde producten.
-
-### createOrder()
+#### `createOrder()`
 
 - **Opbouw:**
   - Haalt opgeslagen producten op uit `localStorage`.
@@ -249,32 +236,64 @@ Dit script is gemaakt voor een eenvoudige demo-webshop. Het maakt gebruik van de
   - Maakt een bestelobject aan met bestelgegevens.
   - Slaat de bestelling op in `localStorage`.
   - Reset de hoeveelheden van de geselecteerde producten naar 0.
-  - Verbergt de totaalprijs, de afrekenknop en de aanpassingsknop.
+  - Verbergt de totaalprijs, de afrekenknop, de aanpassingsknop en de knop om alle producten te verwijderen.
   - Toont een bevestigingsbericht met bestelgegevens.
   - Roept `updateCartAmount` en `displaySelectedProducts` aan.
 
-### fetchAndSaveProducts(updateAmount = true)
+#### Andere functies (niet gewijzigd)
 
-- **Opbouw:**
-  - Accepteert een optioneel argument `updateAmount`.
-  - Haalt opgeslagen producten op uit `localStorage`.
-  - Toont geselecteerde producten en werkt het winkelwagenbedrag bij als `updateAmount` waar is.
-
-### window.addEventListener('storage', (event) => {})
-
-- **Logica:**
-  - Luistert of er iets wordt opgeslagen en werkt het winkelwagenbedrag als er een verandering is.
+- `displaySelectedProducts()`: Haalt opgeslagen producten op, filtert producten met een hoeveelheid groter dan 0 en toont deze in de DOM.
+- `fetchAndSaveProducts(updateAmount = true)`: Haalt opgeslagen producten op en toont geselecteerde producten, werkt het winkelwagenbedrag bij indien nodig.
+- `saveProductsToLocalStorage(products)`: Slaat de gegeven producten op in `localStorage`.
+- `createSelectedProductCard(product)`: Creëert een HTML-element voor de weergave van een geselecteerd product met de mogelijkheid om de hoeveelheid aan te passen of het product te verwijderen.
+- `displayTotalPrice(products)`: Berekent en toont de totaalprijs van de geselecteerde producten.
+- `removeProductFromCart(product)`: Verwijdert een specifiek product uit de winkelwagen en herstelt de voorraad.
+- `window.addEventListener('storage', (event) => {})`: Luistert naar veranderingen in de lokale opslag en werkt het winkelwagenbedrag bij wanneer er veranderingen zijn.
 
 ### Uitvoering
 
-- Voert de initiële ophaling en opslag van producten uit.
-- Voegt event listeners toe aan knoppen (`checkoutButton` en `adjustButton`)
+- Voegt event listeners toe aan de knoppen (`removeAllButton`, `checkoutButton`, en `adjustButton`).
+- Bij klikken op 'removeAllButton' worden alle producten uit de winkelwagen verwijderd, voorraad hersteld en de weergave bijgewerkt.
+- Bij klikken op 'checkoutButton' wordt een bestelling geplaatst, gegevens opgeslagen, en de weergave bijgewerkt.
+- Bij klikken op 'adjustButton' wordt de gebruiker teruggestuurd naar de webshop-pagina (`webshop.html`).
+
+Zeker, laten we naar de functionaliteit van de knoppen '+' (toevoegen) en '-' (verwijderen) kijken:
+
+### Knop '+'
+
+- **Functie: `updateAmountInCart(product, change)`**
+  - **Doel:**
+    - Verhoogt de hoeveelheid van een specifiek product in de winkelwagen.
+  - **Stappen:**
+    1. Haalt de opgeslagen producten op uit `localStorage`.
+    2. Zoekt het specifieke product in de lijst van opgeslagen producten.
+    3. Controleert of de voorraad van het product groter is dan 0.
+    4. Als voorraad toereikend is, verhoogt het de hoeveelheid van het product in de winkelwagen.
+    5. Verlaagt de voorraad van het product met 1.
+    6. Slaat de bijgewerkte producten op in `localStorage`.
+    7. Vernieuwt de weergave van geselecteerde producten en het winkelwagenbedrag.
+
+### Knop '-'
+
+- **Functie: `updateAmountInCart(product, change)`**
+  - **Doel:**
+    - Verlaagt de hoeveelheid van een specifiek product in de winkelwagen.
+  - **Stappen:**
+    1. Haalt de opgeslagen producten op uit `localStorage`.
+    2. Zoekt het specifieke product in de lijst van opgeslagen producten.
+    3. Controleert of de hoeveelheid van het product in de winkelwagen groter is dan 0.
+    4. Als de hoeveelheid toereikend is, verlaagt het de hoeveelheid van het product in de winkelwagen.
+    5. Verhoogt de voorraad van het product met de absolute waarde van 1.
+    6. Slaat de bijgewerkte producten op in `localStorage`.
+    7. Vernieuwt de weergave van geselecteerde producten en het winkelwagenbedrag.
+
+Beide knoppen zijn gekoppeld aan de functie `updateAmountInCart`, die de nodige controles uitvoert om ervoor te zorgen dat de voorraad niet negatief wordt en dat de hoeveelheid in de winkelwagen wordt bijgewerkt op basis van de acties van de gebruiker. Bij elke klik op deze knoppen wordt de voorraad aangepast, de winkelwagen bijgewerkt, en de weergave op de pagina ververst.
 
 ## Naam script: `add-product.js`
 
 In dit script vind je de werking ook in de comment regels.
 
-## Korte analyse van het script
+## Analyse van het script
 
 Algemeen
 
@@ -643,22 +662,41 @@ De specifieke functionaliteit van de webshop, zoals het dynamisch laden van prod
 
 ## Naam script `winkelwagen.html`
 
-HTML-webpagina voor de winkelwagen op de Mansanta-website.
+## Beschrijving van het HTML-script
 
-## over dit script
+Dit HTML-script vertegenwoordigt een webpagina voor een online winkel genaamd "Mansanta". Hieronder volgt een gedetailleerde beschrijving van de verschillende onderdelen van het script:
 
-Dit HTML-script geeft de winkelwagenpagina van Mansanta weer. Hier is een korte analyse, waarbij wordt verwezen naar wat eerder is gezegd over `index.html` en `webshop.html`:
+### Algemene informatie
 
-- Het script volgt hetzelfde algemene patroon als de andere pagina's, zoals `index.html` en `webshop.html`, met inbegrip van de navigatiebalk met logo, link naar de startpagina ('Home'), link naar de webshop ('Webshop'), en een winkelwagenpictogram.
-- Er is een witte strook onder de navigatiebalk en boven de hoofdinhoud van de pagina om scrollen onder de navbar te voorkomen.
-- De hoofdinhoud van de pagina bevat een container met de titel 'Winkelwagen'. Daaronder bevinden zich lege containers (`<div>`) met de id's "messageContainer," "selected-products," en "totalPrice," die worden ingevuld door JavaScript.
-- Er is een paragraaf (`<p>`) met de id "confirmationMessage" en knoppen met de id's "adjustButton" en "checkoutButton" voor het aanpassen van de winkelwagen en het afrekenen.
-- Onderaan de pagina bevindt zich een footer met contactgegevens en sociale media-links, vergelijkbaar met de andere pagina's.
-- Scripttags aan het einde van het body-element verwijzen naar het JavaScript-bestand `winkelwagen.js` en de Bootstrap JavaScript-bibliotheek.
+- Het script is geschreven in HTML en maakt gebruik van Bootstrap (versie 5.3.2) voor de opmaak en styling van de pagina.
+- Er wordt ook gebruik gemaakt van Bootstrap Icons (versie 1.11.3) voor het toevoegen van pictogrammen aan de knoppen.
 
-## opmerking
+### Header Sectie
 
-De specifieke functionaliteit van de winkelwagenpagina, zoals het tonen van geselecteerde producten, het berekenen van de totaalprijs en de afrekenprocessen, wordt het `winkelwagen.js`-bestand geregeld.
+- De header bevat meta-informatie over de pagina, titel, externe stijlbladen (styles.css, Bootstrap CSS), en externe Bootstrap Icons CSS.
+- De navigatiebalk (navbar) bevat het logo van Mansanta, een hamburgerknop voor mobiele weergave, en links naar de 'Home' en 'Webshop' pagina's.
+- De boodschappenwagen (shopping cart) wordt aangeduid met een winkelwagenpictogram (bi-cart2) aan de rechterkant van de navigatiebalk. Het aantal items in de winkelwagen wordt dynamisch weergegeven met een rode cirkel en het bijbehorende aantal.
+
+### Body Sectie
+
+- Er is een lege ruimte tussen de navigatiebalk en de volgende sectie.
+- De volgende sectie bevat een container met de titel "Winkelwagen", een berichtcontainer, een lijst van geselecteerde producten, de totaalprijs, een bevestigingsbericht en drie knoppen: "Afrekenen", "Naar shop" en "Alles verwijderen".
+- Het "Afrekenen"-pictogram wordt weergegeven met een creditcardpictogram (bi-credit-card-2-front).
+- Het "Naar shop"-pictogram wordt weergegeven met een winkelmandpictogram (bi-shop).
+- Het "Alles verwijderen"-pictogram wordt weergegeven met een prullenbakpictogram (bi-trash).
+
+### Footer Sectie
+
+- De footer bevat copyrightinformatie, evenals sociale media-iconen voor Facebook, Instagram, een locatiepictogram (bi-geo-alt-fill), en een e-mailpictogram (bi-envelope).
+
+### JavaScript-bestanden
+
+- Er zijn twee JavaScript-bestanden opgenomen: "winkelwagen.js" en "bootstrap.bundle.min.js" van Bootstrap.
+
+### Opmerkingen
+
+- Het script maakt gebruik van inline-stijl om bepaalde elementen op maat aan te passen.
+- Het is duidelijk dat het script functionaliteit heeft voor een winkelwagen met producten, waarbij gebruikers producten kunnen selecteren, de totaalprijs kunnen bekijken en verschillende acties kunnen uitvoeren, zoals afrekenen, teruggaan naar de winkel en alles verwijderen.
 
 ## Naam script `productoverzicht.html`
 
@@ -722,7 +760,7 @@ Dit HTML-script vertegenwoordigt de pagina voor het toevoegen van producten op d
 
 - **Navigatiebalk**: Een navigatiebalk bevat het logo, menu-items voor productoverzicht, besteloverzicht en uitloggen. De uitloglink heeft de id "logoutLink," die wordt gebruikt door het `logout.js`-bestand.
 
-- **Formulier**: Een formulier met verschillende invoervelden voor het toevoegen van productinformatie, zoals id (automatisch ingevuld), naam, info, prijs, voorraad, bestelling, afbeelding en een voorbeeld van de afbeelding.
+- **Formulier**: Een formulier met verschillende invoervelden voor het toevoegen van productinformatie, zoals id (automatisch ingevuld), naam, info, prijs, voorraad, afbeelding en een voorbeeld van de afbeelding.
 
 - **Knoppen**: Er zijn twee knoppen onder het formulier: "Voeg toe!" (om het product toe te voegen) en een knop met een pijl-terugpictogram die linkt naar "productoverzicht.html."
 
@@ -744,7 +782,7 @@ Dit HTML-script vertegenwoordigt de pagina voor het bewerken van producten op de
 
 - **Navigatiebalk**: Een navigatiebalk bevat het logo, menu-items voor productoverzicht, besteloverzicht en uitloggen. De uitloglink heeft de id "logoutLink," die wordt gebruikt door het `logout.js`-bestand.
 
-- **Formulier**: Een formulier met verschillende invoervelden voor het bewerken van productinformatie, zoals id (niet bewerkbaar), naam, info, prijs, voorraad, bestelling, afbeelding en een voorbeeld van de afbeelding.
+- **Formulier**: Een formulier met verschillende invoervelden voor het bewerken van productinformatie, zoals id (niet bewerkbaar), naam, info, prijs, voorraad,afbeelding en een voorbeeld van de afbeelding.
 
 - **Knoppen**: Er zijn twee knoppen onder het formulier: "Wijzig!" (om de productinformatie te wijzigen) en een knop met een pijl-terugpictogram die linkt naar "productoverzicht.html."
 
